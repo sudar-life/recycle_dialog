@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:recycle_dialog/src/controller/select_provider.dart';
 import 'package:recycle_dialog/src/widget_a.dart';
 
 void main() {
@@ -14,7 +16,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: WidgetA(),
+      home: ChangeNotifierProvider(
+        create: (BuildContext context) => SelecteProvider(),
+        child: WidgetA(),
+      ),
     );
   }
 }

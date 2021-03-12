@@ -1,39 +1,18 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:recycle_dialog/src/controller/select_provider.dart';
 
-class RadioGroupWidget extends StatefulWidget {
-  final String feedback;
-
-  const RadioGroupWidget({this.feedback});
-
-  @override
-  _RadioGroupWidgetState createState() => _RadioGroupWidgetState(feedback);
-}
-
-class _RadioGroupWidgetState extends State<RadioGroupWidget> {
-  String feedback;
-  _RadioGroupWidgetState(this.feedback);
-  String selectGroup;
-
-  @override
-  void initState() {
-    super.initState();
-    selectGroup = feedback;
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
+class RadioGroupWidget extends StatelessWidget {
+  RadioGroupWidget();
+  SelecteProvider selectProvider;
   setSelectedRadioTile(String val) {
-    setState(() {
-      selectGroup = val;
-      print('setSelectedRadioTile : $selectGroup');
-    });
+    selectProvider.updateSelectGroup(val);
   }
 
+  @override
   Widget build(BuildContext context) {
+    selectProvider = Provider.of<SelecteProvider>(context);
     return Column(
       children: <Widget>[
         Padding(
@@ -42,7 +21,7 @@ class _RadioGroupWidgetState extends State<RadioGroupWidget> {
             children: [
               Radio<String>(
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  groupValue: selectGroup,
+                  groupValue: selectProvider.selectGroup,
                   value: '1',
                   onChanged: (String newValue) {
                     setSelectedRadioTile(newValue);
@@ -68,7 +47,7 @@ class _RadioGroupWidgetState extends State<RadioGroupWidget> {
             children: [
               Radio<String>(
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  groupValue: selectGroup,
+                  groupValue: selectProvider.selectGroup,
                   value: '2',
                   onChanged: (String newValue) {
                     setSelectedRadioTile(newValue);
@@ -94,7 +73,7 @@ class _RadioGroupWidgetState extends State<RadioGroupWidget> {
             children: [
               Radio<String>(
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  groupValue: selectGroup,
+                  groupValue: selectProvider.selectGroup,
                   value: '3',
                   onChanged: (String newValue) {
                     setSelectedRadioTile(newValue);
@@ -120,7 +99,7 @@ class _RadioGroupWidgetState extends State<RadioGroupWidget> {
             children: [
               Radio<String>(
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  groupValue: selectGroup,
+                  groupValue: selectProvider.selectGroup,
                   value: '4',
                   onChanged: (String newValue) {
                     setSelectedRadioTile(newValue);
