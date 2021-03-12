@@ -14,7 +14,7 @@ class DialogB extends StatelessWidget {
         height: 300,
         child: Column(
           children: [
-            Container(child: RadioGroupWidget(feedback: '')),
+            Container(child: RadioGroupWidget()),
             TextField(),
             isFinished
                 ? RaisedButton(
