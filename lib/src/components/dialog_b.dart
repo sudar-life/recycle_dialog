@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recycle_dialog/src/widget_c.dart';
+import '../components/radio_select.dart';
 
 class DialogB extends StatelessWidget {
   final bool isFinished;
@@ -13,7 +14,7 @@ class DialogB extends StatelessWidget {
         height: 300,
         child: Column(
           children: [
-            Text("DIALOG"),
+            Container(child: RadioGroupWidget(feedback: '')),
             TextField(),
             isFinished
                 ? RaisedButton(
